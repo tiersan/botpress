@@ -52,4 +52,5 @@ export interface LogsConfig {
 export interface DialogConfig {
   timeoutInterval: string
   sessionTimeoutInterval: string
+  errorMessage?: string
 }

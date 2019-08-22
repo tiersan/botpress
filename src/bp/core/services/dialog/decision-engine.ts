@@ -170,10 +170,13 @@ export class DecisionEngine {
 
   private async _sendErrorMessage(event: IO.Event) {
     const config = await this.configProvider.getBotConfig(event.botId)
-    const element = _.get(config, 'dialog.error.args', {
-      text: "😯 Oops! We've got a problem. Please try something else while we're fixing it 🔨",
-      typing: true
-    })
+    const errorMessage = _.get(
+      config,
+      'dialog.errorMessage',
+      "😯 Oops! We've got a problem. Please try something else while we're fixing it 🔨"
+    )
+
+    const element = { text: errorMessage, typing: true }
     const contentType = _.get(config, 'dialog.error.contentType', 'builtin_text')
     const eventDestination = _.pick(event, ['channel', 'target', 'botId', 'threadId'])
     const payloads = await this.cms.renderElement(contentType, element, eventDestination)

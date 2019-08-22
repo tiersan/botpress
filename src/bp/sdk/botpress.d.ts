@@ -841,6 +841,8 @@ declare module 'botpress/sdk' {
     timeoutInterval: string
     /** The interval until a session expires */
     sessionTimeoutInterval: string
+    /** Customize the error message displayed to the user when an unexpected error happens */
+    errorMessage?: string
   }
 
   /**
