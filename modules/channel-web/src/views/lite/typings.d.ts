@@ -157,6 +157,13 @@ export type Config = {
   showPoweredBy: boolean
   /** When enabled, sent messages are persisted to local storage (recall previous messages)  */
   enablePersistHistory: boolean
+  /** Experimental: expose the store to the parent frame for more control on the webchat's behavior */
+  exposeStore: boolean
+  /**
+   * Experimental: work around same-origin policy when botpress is hosted on a subdomain and your website is on the main domain
+   * Only works from a subdomain to its parent domain (eg: sub.acme.com -> acme.com)
+   * */
+  overrideDomain: string
 }
 
 type OverridableComponents = 'below_conversation' | 'before_container' | 'composer'
